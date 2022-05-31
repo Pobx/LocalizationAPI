@@ -16,7 +16,7 @@ namespace LocalizationAPI
             _distributedCache = distributedCache;
 
             localizationData = new Dictionary<string, string>();
-            localizationData.Add("HELLO_TH", "สวัสดี");
+            localizationData.Add("HELLO_TH", "สวัสดีเด้อพี่น้อง");
             localizationData.Add("HELLO_EN", "Hello");
         }
         public LocalizedString this[string name]
@@ -50,16 +50,17 @@ namespace LocalizationAPI
             string cacheValue = _distributedCache.GetString(cacheKey);
             string result;
 
+            result = localizationData.GetValueOrDefault(cacheKey);
 
-            if (string.IsNullOrEmpty(cacheValue))
-            {
-                result = localizationData.GetValueOrDefault(cacheKey);
-                _distributedCache.SetString(cacheKey, result);
-            }
-            else
-            {
-                result = cacheValue;
-            }
+            //if (string.IsNullOrEmpty(cacheValue))
+            //{
+            //    result = localizationData.GetValueOrDefault(cacheKey);
+            //    _distributedCache.SetString(cacheKey, result);
+            //}
+            //else
+            //{
+            //    result = cacheValue;
+            //}
 
             return result;
         }
