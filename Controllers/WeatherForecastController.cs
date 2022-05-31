@@ -38,5 +38,11 @@ namespace LocalizationAPI.Controllers
             })
             .ToArray();
         }
+
+        [HttpPost]
+        public ActionResult<string> TestStringLocalizer([FromBody] TestWeatherForcast criteria)
+        {
+            return Ok(criteria.Name);
+        }
     }
 }
